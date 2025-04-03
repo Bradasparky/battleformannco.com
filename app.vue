@@ -1,7 +1,8 @@
 <template>
   <div>
-    <!-- <NuxtRouteAnnouncer /> -->
-    <!-- <NuxtWelcome /> -->
-     <NuxtPage />
+    <h1 class="tf2build primary">
+      Battle For Mann Co.
+    </h1>
+    <NuxtPage />
   </div>
 </template>

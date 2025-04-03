@@ -15,10 +15,16 @@
     "@nuxt/fonts": "^0.11.0",
     "@nuxt/icon": "^1.11.0",
     "@nuxt/ui": "^3.0.0",
+    "@nuxtjs/tailwindcss": "^6.13.2",
+    "@tailwindcss/vite": "^4.1.1",
     "eslint": "^9.22.0",
     "nuxt": "^3.16.0",
+    "tailwindcss": "^4.1.1",
     "typescript": "^5.8.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/device": "^3.2.4"
   }
 }
