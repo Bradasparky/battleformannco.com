@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import '~/assets/css/main.css';
-import homePage from '~/components/home-page.vue';
+import '~/assets/css/main.scss';
+import homePage from '~/components/HomePage.vue';
 
 // For the Content Renderer
 /*const route = useRoute();

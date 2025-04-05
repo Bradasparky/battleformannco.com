@@ -18,4 +18,7 @@
 
 <style scoped>
 
+h2 {
+  margin: 1rem;
+}
 </style>
