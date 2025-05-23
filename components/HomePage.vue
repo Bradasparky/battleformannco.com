@@ -5,6 +5,11 @@
 <template>
   <div>
     <h2 class="tf2build secondary">
+      VSH Server Features
+    </h2>
+    <ServerFeatures />
+
+    <h2 class="tf2build secondary">
       Discord
     </h2>
     <DiscordServerInvite />

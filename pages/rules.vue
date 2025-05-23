@@ -4,11 +4,10 @@ import '~/assets/css/rules.scss';
 
 <template>
   <div class="rules-page">
-    <div class="rules-block">
-      <h2 class="tf2build rule-header">
+    <h2 class="tf2build secondary rule-header">
         Server Rules
-      </h2>
-    
+    </h2>
+    <div class="rules-block">
       <div class="rules-content">
         <section>
           <ul>
@@ -84,9 +83,6 @@ import '~/assets/css/rules.scss';
   flex-direction: column;
   flex-grow: 1;
   align-items: center; /* Keeps as much text as possible on screen */
-
-  margin-top: var(--rules-page-margin-top);
-  margin-bottom: var(--rules-page-margin-bottom);
   word-break: break-word;
 }
 
@@ -99,6 +95,7 @@ import '~/assets/css/rules.scss';
   color: var(--tf2-beige);
   background-color: var(--tf2-dark);
 
+  border: dashed;
   border-color: var(--tf2-gray);
   border-width: var(--rules-block-border-width);
   border-radius: var(--rules-block-border-radius);
@@ -113,8 +110,10 @@ import '~/assets/css/rules.scss';
 
 .rule-header {
   color: var(--tf2-beige);
-  padding-top: var(--rule-header-padding-top);
-  text-align: center;
+  margin-top: var(--rule-header-margin-top);
+  margin-right: var(--rule-header-margin-right);
+  margin-bottom: var(--rule-header-margin-bottom);
+  margin-left: var(--rule-header-margin-left);
 }
 
 .rules-content {
@@ -146,11 +145,6 @@ li.rule-name ~ ul {
 
 @media (width <= $phone-res)
 {
-  .rules-page {
-    margin-top: calc(var(--rules-page-margin-top) * var(--phone-res-mult));
-    margin-bottom: calc(var(--rules-page-margin-bottom) * var(--phone-res-mult));
-  }
-
   .rules-block {
     border-width: calc(var(--rules-block-border-width) * var(--phone-res-mult));
     border-radius: calc(var(--rules-block-border-radius) * var(--phone-res-mult));
@@ -164,7 +158,10 @@ li.rule-name ~ ul {
 
   .rule-header {
     font-size: calc(var(--h2-font-size) * var(--phone-res-mult) * 0.8);
-    padding-top: calc(var(--rule-header-padding-top) * var(--phone-res-mult));
+    margin-top: calc(var(--rule-header-margin-top) * var(--phone-res-mult));
+    margin-right: calc(var(--rule-header-margin-right) * var(--phone-res-mult));
+    margin-bottom: calc(var(--rule-header-margin-bottom) * var(--phone-res-mult));
+    margin-left: calc(var(--rule-header-margin-left) * var(--phone-res-mult));
   }
 
   div.rules-content span {
