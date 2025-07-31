@@ -12,7 +12,7 @@ if (serverInfo) {
     meta: [
       {
         "http-equiv": "refresh",
-        content: `3; url=${uriProtocol}`,
+        content: `0; url=${uriProtocol}`,
       },
     ]
   });
@@ -26,17 +26,39 @@ else {
 
 <template>
   <div v-if="serverInfo">
-    <h2>You're on your way to</h2>
-    <h2>{{ serverInfo.name }}</h2>
-    <p>(If you want to manually connect, <a :href=uriProtocol>click here</a>)</p>
+    <h2 class="tf2build connect-oyw">You're on your way to:</h2>
+    <h2 class="tf2build secondary">{{ serverInfo.name }}</h2>
+    <h2 class="tf2build secondary connect-click-here"><a :href=uriProtocol>(Click here to connect manually)</a></h2>
   </div>
   <div v-else>
-    <h3>Server not found</h3>
-    <p>Please check the server ID and try again.</p>
-
+    <h2 class="tf2build not-found">Server not found</h2>
   </div>
 </template>
 
 <style>
+.connect-oyw {
+  color: rgb(175, 169, 149); 
+  font-size: 2em;
+  margin-top: 2em;
+}
 
+.connect-click-here {
+  color: rgb(175, 169, 149);
+  font-size: 1.5em; 
+  margin-top: 0.5em;
+}
+
+.connect-click-here:hover {
+  color: var(--tf2-beige);
+}
+
+.connect-click-here:active {
+  color: rgb(175, 169, 149);
+}
+
+.not-found {
+  color: rgb(175, 169, 149); 
+  font-size: 2.5em;
+  margin-top: 1em;
+}
 </style>
