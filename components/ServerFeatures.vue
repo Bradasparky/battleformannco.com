@@ -33,6 +33,18 @@ import '~/assets/css/rules.scss';
             </ul>
           </ul>
           <ul>
+            <li class="feature-name">Teammate Projectile Passthrough</li>
+            <ul>
+              <li>Rockets, Grenades, Flares, Arrows, Jars, Balls, and Cleaver all pass through teammates.</li>
+            </ul>
+          </ul>
+          <ul>
+            <li class="feature-name">Voicemenu Class Notifier</li>
+            <ul>
+              <li>When using voicemenu commands, the (Voice) prefix now displays your class as (Voice Scout).</li>
+            </ul>
+          </ul>
+          <ul>
             <li class="feature-name">Commands</li>
             <ul>
               <li>!haletoggle - Toggle whether you want to be chosen as Hale. If nobody wants to play Hale, a random player will be selected.</li>
