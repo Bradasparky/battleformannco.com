@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import '~/assets/css/server-list.scss';
-import { servers } from '~/constants/servers';
+import type { Server } from '~/constants/servers';
 
 const copyServerIp = (ip: string) => {
   navigator.clipboard.writeText(ip)
@@ -8,9 +8,16 @@ const copyServerIp = (ip: string) => {
   .catch(console.error);
 }
 
-const getSteamProtocolUri = (ip: string) => {
-  return `steam://connect/${ip}`;
-}
+const servers: Server[] = await useFetch(`/api/servers`)
+  .then((data) => data.data.value?.response.servers || []);
+
+const steamProtocolConnectUri = (ip: string) => `steam://connect/${ip}`;
+const toMapName = (map: string) => {
+  const parts = map.split('_').slice(1);
+  return parts
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 </script>
 
 <template>
@@ -18,22 +25,26 @@ const getSteamProtocolUri = (ip: string) => {
     <table>
       <thead>
         <tr>
-          <th>Server Name</th>
-          <th>IP Address</th>
+          <th>Servers</th>
+          <th>Map</th>
+          <th>Players</th>
+          <th>Address</th>
           <th class="join-via-steam">Join via Steam</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="server in servers" :key="server.ip">
+        <tr v-for="server in servers" :key="server.steamid">
           <td>{{server.name}}</td>
-          <td @click="copyServerIp(server.ip)">
-            <span class="ip-address">
-            {{server.ip}}
-            </span>
+          <td>{{toMapName(server.map)}}</td>
+          <td>
+            {{server.players}} / {{server.max_players}}
+          </td>
+          <td @click="copyServerIp(server.addr)">
+            <span class="ip-address">{{server.addr}}</span>
           </td>
           <td class="join-via-steam">
-            <a :href="getSteamProtocolUri(server.ip)">
+            <a :href="steamProtocolConnectUri(server.addr)">
               <button class="connect">
                 Connect
               </button>
