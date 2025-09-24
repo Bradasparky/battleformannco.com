@@ -57,7 +57,7 @@ import '~/assets/css/rules.scss';
             <ul>
               <li>Our servers run all of the stock VSH maps, as well as custom maps. Custom maps are hosted on the workshop so that our players' download folder won't increase in size every time a map is updated.</li>
               <li>Stock - Tinyrock, Distillery, Skirmish, Nucleus, Outburst, Maul</li>
-              <li>Custom - Karijini, Outlook, Expedition</li>
+              <li>Custom - Stowaway (In Alpha) (More coming soon)</li>
             </ul>
           </ul>
         </section>
