@@ -1,11 +1,17 @@
 <script lang="ts" setup>
-import { servers, type Server } from '~/constants/servers';
+import type { Server } from '~/constants/servers';
 
 const query = useRoute().query as { id: string };
-const serverInfo: Server | undefined = servers.find(server => server.id === query.id);
+const indexId = parseInt(query.id);
+
+const servers: Server[] = await useFetch(`/api/servers`)
+  .then((data) => data.data.value?.response.servers || []);
+
+const serverInfo: Server | undefined = servers[indexId];
+
 let uriProtocol = '';
 if (serverInfo) {
-  uriProtocol = `steam://connect/${serverInfo?.ip}`;
+  uriProtocol = `steam://connect/${serverInfo.addr}`;
 
   useHead({
     title: "Joining Server",
