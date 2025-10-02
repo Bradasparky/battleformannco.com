@@ -27,10 +27,5 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@nuxt/icon",
     "@nuxt/ui",
-    "@nuxtjs/device",
   ],
-  devServer: {
-    host: "0.0.0.0",
-    port: 4000,
-  },
 });

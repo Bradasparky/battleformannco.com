@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Server } from '~/constants/servers';
+import type { Server } from '~/app/constants/servers';
 
 const query = useRoute().query as { id: string };
 const indexId = parseInt(query.id);

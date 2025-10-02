@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import '~/assets/css/server-list.scss';
-import type { Server } from '~/constants/servers';
+import type { Server } from '~/app/constants/servers';
 
 const copyServerIp = (ip: string) => {
   navigator.clipboard.writeText(ip)
