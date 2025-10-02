@@ -1,18 +1,23 @@
 <script lang="ts" setup>
-import type { Server } from '~/app/constants/servers';
+import type { Server } from '~/constants/servers';
 
 const query = useRoute().query as { id: string };
 const indexId = parseInt(query.id);
 
-const servers: Server[] = await useFetch(`/api/servers`)
+const servers: Server[] = await useFetch("/api/servers")
   .then((data) => data.data.value?.response.servers || []);
 
-const serverInfo: Server | undefined = servers[indexId];
+const serverInfo: Server | undefined = servers[indexId - 1];
+const uriProtocol = `steam://connect/${serverInfo?.addr}`;
 
-let uriProtocol = '';
+const toMapName = (map: string) => {
+  const parts = map.split('_').slice(1);
+  return parts
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 if (serverInfo) {
-  uriProtocol = `steam://connect/${serverInfo.addr}`;
-
   useHead({
     title: "Joining Server",
     meta: [
@@ -34,6 +39,7 @@ else {
   <div v-if="serverInfo">
     <h2 class="tf2build connect-oyw">You're on your way to:</h2>
     <h2 class="tf2build secondary">{{ serverInfo.name }}</h2>
+    <h2 class="tf2build secondary">{{ toMapName(serverInfo.map) }}</h2>
     <h2 class="tf2build secondary connect-click-here"><a :href=uriProtocol>(Click here to connect manually)</a></h2>
   </div>
   <div v-else>
