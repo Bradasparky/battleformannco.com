@@ -3,7 +3,7 @@ import type { FHR3CcKcnHdlsHWzr5RZ5KMJ0EvSkVlWXnHV23RyWXo as GameServerInfo } fr
 import toMapName from '~/utils/source/toMapName';
 import uriConnect from '~/utils/steam/uriConnect';
 
-const { data, error, pending } = await useLazyFetch<GameServerInfo[]>("/api/servers");
+const { data, error, pending, retry } = await useLazyFetch<GameServerInfo[]>("/api/servers");
 
 const copyServerIp = (ip: string) => {
   navigator.clipboard.writeText(ip)
@@ -15,11 +15,11 @@ const copyServerIp = (ip: string) => {
 <template>
   <div>
     <div v-if="pending">
-      <h6 class="text-center text-xl">Fetching server info...</h6>
+      <h6 class="text-center text-xl">Retrieving server info...</h6>
       <UProgress animation="swing" color="neutral" class="w-50% mx-auto my-4" />
     </div>
     <div v-else-if="error">
-      <h6 class="text-center text-xl">Error fetching server info.</h6>
+      <h6 class="text-center text-xl">Error retrieving server info. <span class="cursor-pointer" @click="retry">Retry</span></h6>
     </div>
     <table v-else class="mx-auto border-4 border-[var(--tf2-beige)] border-solid">
       <thead class="font-[TF2_Build]">

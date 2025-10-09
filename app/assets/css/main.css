@@ -20,7 +20,6 @@ body {
   background-color: var(--tf2-dark);
   color: var(--tf2-beige);
   margin: 1em;
-  padding-bottom: 8em;
 }
 
 h1, h2, h3 {

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="pb-16">
     <NavHeader />
     <slot />
   </div>

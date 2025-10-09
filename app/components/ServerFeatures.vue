@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div class="w-4xl mx-auto outline-dashed outline-2 px-5 pb-4">
+<div class="mx-auto max-w-4xl outline-dashed outline-2 p-4">
   <h3 class="text-2xl">Damage Based Hale Queue</h3>
   <ul class="list-disc list-inside">
     <li>Deal damage to earn points.</li>
