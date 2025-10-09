@@ -15,6 +15,8 @@ if (serverInfo.value) {
         content: `0; url=${uriConnect(serverInfo.value.addr)}`,
       },
       { name: "og:title", content: `Connect and join ${serverInfo.value.name}` },
+      { name: "og:description", content: `Map: ${toMapName(serverInfo.value.map)}, Players: ${serverInfo.value.players} / ${serverInfo.value.max_players}` },
+      { name: "og:logo", content: "https://cdn.discordapp.com/icons/1241512258450751539/1a947522b12f7d3d507d3bfb12e4527d.webp?size=64&quality=lossless" }
     ]
   });
 }
