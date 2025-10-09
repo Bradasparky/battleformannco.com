@@ -15,14 +15,14 @@
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^2.0.0",
     "@nuxt/ui": "^4.0.1",
-    "@tailwindcss/vite": "^4.1.14",
+    "@unocss/nuxt": "^66.5.2",
+    "@unocss/preset-wind4": "^66.5.2",
     "better-sqlite3": "^12.4.1",
-    "eslint": "^9.36.0",
-    "nuxt": "^4.1.2",
-    "sass": "^1.89.2",
-    "tailwindcss": "^4.1.14",
+    "eslint": "^9.37.0",
+    "nuxt": "latest",
+    "sass-embedded": "^1.93.2",
     "typescript": "^5.9.3",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "vue": "latest",
+    "vue-router": "latest"
   }
 }

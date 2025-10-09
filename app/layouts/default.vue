@@ -3,9 +3,10 @@
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <NavHeader />
+    <slot />
+  </div>
 </template>
 
 <style scoped>

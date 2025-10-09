@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --tf2-dark: rgb(30, 30, 30);
+  --tf2-dark-gray: rgb(62, 62, 62);
+  --tf2-gray: rgb(154, 146, 128);
+  --tf2-beige: rgb(245, 229, 193);
+  --tf2-orange: rgb(244, 114, 43);
+  --tf2-dark-orange: rgb(180, 96, 50);
+
+  --discord-gray: rgb(55, 55, 62);
+	--discord-green: rgb(0, 134, 58);
+	--discord-badge-border-gray: rgb(63, 64, 70);
+	--discord-light-gray: rgb(180, 180, 180);
+	--discord-dark-gray: rgb(129, 129, 138);
+}
+
+body {
+  background-color: var(--tf2-dark);
+  color: var(--tf2-beige);
+  margin: 1em;
+  padding-bottom: 8em;
+}
+
+h1, h2, h3 {
+  font-family: "TF2 Build";
+  word-break: break-word;
+  padding: 0.5em 0em 0.25em 0em;
+}
+
+h4, h5, h6 {
+  font-family: "TF2 Secondary";
+  font-weight: 600;
+  color: var(--tf2-beige);
+  padding: 0.2em 0em;
+}
+
+h1 {
+  color: var(--tf2-orange);
+}
+
+ul {
+  margin: 0.25em 0em;
+}
+
+li {
+  list-style-type: circle;
+  margin-left: 2em;
+}
