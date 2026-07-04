@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         { charset: "UTF-8" },
         {
           name: "viewport",
-          content: "width=device-scale, initial-scale=1",
+          content: "width=device-width, initial-scale=1",
         },
         {
           name: "og:title",
