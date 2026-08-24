@@ -2,7 +2,7 @@ import type { FHR3CcKcnHdlsHWzr5RZ5KMJ0EvSkVlWXnHV23RyWXo as GameServerInfo } fr
 
 const idServerMap = {
   "vsh_1": "74.91.122.168:27018",
-  "vsh_2": "74.91.122.168:27019",
+  "rand_1": "74.91.122.168:27019",
 }
 
 const CACHE_DURATION = 30000;
