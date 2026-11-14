@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/css/main.css"],
   runtimeConfig: {
-    steamGameServerApiKey: "7BF431448D1F461CF86C4BFB5DF54D03"
+    steamGameServerApiKey: ""
   },
   unocss: {
     nuxtLayers: true,
@@ -47,5 +47,5 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/ui",
     "@unocss/nuxt",
-  ],
+  ]
 });
