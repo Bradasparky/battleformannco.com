@@ -10,8 +10,8 @@
     <h2 class="text-center text-4xl">Servers</h2>
     <GameServerList />
 
-    <h2 class="text-center text-4xl">VSH Server Features</h2>
-    <ServerFeatures />
+    <!-- <h2 class="text-center text-4xl">VSH Server Features</h2>
+    <ServerFeatures /> -->
   </div>
 </template>
 
