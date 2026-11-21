@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-import type { FHR3CcKcnHdlsHWzr5RZ5KMJ0EvSkVlWXnHV23RyWXo as GameServerInfo } from '~/constants/servers';
+import type { InfoResponse } from 'steam-server-query';
 import toMapName from '~/utils/source/toMapName';
 import uriConnect from '~/utils/steam/uriConnect';
 
-const { data, error, pending, retry } = await useLazyFetch<GameServerInfo[]>("/api/servers");
+type GameServerInfo = Pick<InfoResponse, 'name' | 'map' | 'players' | 'maxPlayers'> & {
+  addr: string;
+};
+
+const { data, pending, error, refresh } = await useLazyFetch<GameServerInfo[]>("/api/v2/servers");
 
 const copyServerIp = (ip: string) => {
   navigator.clipboard.writeText(ip)
@@ -13,47 +17,29 @@ const copyServerIp = (ip: string) => {
 </script>
 
 <template>
-  <div>
+  <div class="mx-auto w-200">
     <div v-if="pending">
-      <h6 class="text-center text-xl">Retrieving server info...</h6>
-      <UProgress animation="swing" color="neutral" class="w-50% mx-auto my-4" />
+      Loading...
     </div>
-    <div v-else-if="error">
-      <h6 class="text-center text-xl">Error retrieving server info. <span class="cursor-pointer" @click="retry">Retry</span></h6>
-    </div>
-    <table v-else class="mx-auto border-4 border-[var(--tf2-beige)] border-solid">
-      <thead class="font-[TF2_Build]">
-        <tr>
-          <th>Servers</th>
-          <th>Map</th>
-          <th>Players</th>
-          <th>Address</th>
-          <th class="join-via-steam">Join via Steam</th>
-        </tr>
-      </thead>
-
-      <tbody class="font-[TF2_Secondary]">
-        <tr v-for="server in data" :key="server.steamid">
-          <td>{{server.name}}</td>
-          <td>{{toMapName(server.map)}}</td>
-          <td class="text-center">
-            {{server.players}} / {{server.maxPlayers}}
-          </td>
-          <td>
-            <span class="font-mono text-sm cursor-copy border-b-2 border-dotted" title="Click to copy" @click="copyServerIp(server.addr)">
-              {{server.addr}}
+    <div v-else-if="data">
+      <div v-for="item in data" class="py-2">
+        <div class="flex justify-between">
+        <div class="text-xl">{{ item.name }}</div>
+        <div>{{ item.players }} of {{ item.maxPlayers }} players max</div>
+      </div>
+        <div>Current Map: {{ toMapName(item.map) }}</div>
+        <div class="my-4">
+          <a :href="uriConnect(item.addr)">
+            <span class="bg-[var(--tf2-dark-orange)] rounded-md px-4 py-2 my-4">
+              Connect
             </span>
-          </td>
-          <td class="text-center">
-            <a :href="uriConnect(server.addr)">
-              <span class="bg-[var(--tf2-dark-orange)] rounded-md px-4 py-2">
-                Connect
-              </span>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      Couldn't get game server info :(
+    </div>
   </div>
 </template>
 

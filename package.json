@@ -19,10 +19,13 @@
     "@unocss/preset-wind4": "^66.6.8",
     "better-sqlite3": "^12.4.1",
     "eslint": "^9.37.0",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.6.4",
     "sass-embedded": "^1.93.2",
     "typescript": "^5.9.3",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "dependencies": {
+    "steam-server-query": "^1.1.3"
   }
 }
