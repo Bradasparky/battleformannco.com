@@ -23,7 +23,8 @@
     "sass-embedded": "^1.93.2",
     "typescript": "^5.9.3",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue-tsc": "^3.3.14"
   },
   "dependencies": {
     "steam-server-query": "^1.1.3"
