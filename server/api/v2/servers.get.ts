@@ -5,6 +5,8 @@ const serverAddresses = [
   "74.91.122.168:27019",
 ];
 const cacheDuration = 30_000;
+const queryAttempts = 3;
+const queryTimeouts = [1_000, 2_000, 4_000];
 
 type GameServerInfo = Pick<InfoResponse, "name" | "map" | "players" | "maxPlayers"> & {
   addr: string;
@@ -19,7 +21,11 @@ export default defineEventHandler(async () => {
 
   const servers = await Promise.all(
     serverAddresses.map(async (addr): Promise<GameServerInfo> => {
-      const { name, map, players, maxPlayers } = await queryGameServerInfo(addr);
+      const { name, map, players, maxPlayers } = await queryGameServerInfo(
+        addr,
+        queryAttempts,
+        queryTimeouts,
+      );
       return { addr, name, map, players, maxPlayers };
     }),
   );
