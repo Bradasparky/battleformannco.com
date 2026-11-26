@@ -1,10 +1,23 @@
 <script lang="ts" setup>
-import type { FHR3CcKcnHdlsHWzr5RZ5KMJ0EvSkVlWXnHV23RyWXo as GameServerInfo } from '~/constants/servers';
+import type { InfoResponse } from 'steam-server-query';
 import toMapName from '~/utils/source/toMapName';
 import uriConnect from '~/utils/steam/uriConnect';
 
-const query = useRoute().query as { id: string };
-const { data: serverInfo } = await useFetch<GameServerInfo>(`/api/servers/${query.id}`);
+type GameServerInfo = Pick<InfoResponse, 'name' | 'map' | 'players' | 'maxPlayers'> & {
+  addr: string;
+};
+
+const serverAddressById = new Map([
+  ['vsh_1', '74.91.122.168:27018'],
+  ['rand_1', '74.91.122.168:27019'],
+]);
+const route = useRoute();
+const { data: servers, error } = await useFetch<GameServerInfo[]>('/api/v2/servers');
+const serverInfo = computed(() => {
+  const id = route.query.id;
+  const address = typeof id === 'string' ? serverAddressById.get(id) : undefined;
+  return address ? servers.value?.find(server => server.addr === address) : undefined;
+});
 
 if (serverInfo.value) {
   useHead({
@@ -38,6 +51,9 @@ else {
           (Click here to connect manually)
           </a>
         </h3>
+    </div>
+    <div v-else-if="error">
+      <h2 class="text-4xl color-[var(--tf2-gray)]">Couldn't get game server info</h2>
     </div>
     <div v-else>
       <h2 class="text-4xl color-[var(--tf2-gray)]">Error: Server not found</h2>
